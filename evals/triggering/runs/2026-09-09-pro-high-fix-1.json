@@ -1,0 +1,54 @@
+{
+  "coverage": [
+    "verification-matrix"
+  ],
+  "gate-before-done": [
+    "verification-matrix"
+  ],
+  "script-mutation": [
+    "script-contract"
+  ],
+  "script-report": [
+    "script-contract"
+  ],
+  "handoff-chain": [
+    "delegation"
+  ],
+  "who-explores": [
+    "collaboration-modes",
+    "delegation"
+  ],
+  "split-or-self": [
+    "delegation"
+  ],
+  "readonly-rights": [
+    "delegation"
+  ],
+  "context-full": [
+    "session-handoff"
+  ],
+  "flaky-bug": [
+    "debugging-loop"
+  ],
+  "fix-then-what": [
+    "debugging-loop"
+  ],
+  "how-deep": [
+    "collaboration-modes"
+  ],
+  "urgent-broken": [
+    "collaboration-modes"
+  ],
+  "same-prep-every-time": [
+    "context-packs"
+  ],
+  "startup-map-for-repeat-work": [
+    "context-packs"
+  ],
+  "red-after-refactor": [
+    "test-discipline"
+  ],
+  "where-to-start-tests": [
+    "test-discipline"
+  ]
+}

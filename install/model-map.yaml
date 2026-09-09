@@ -1,0 +1,31 @@
+# Tier -> model and effort mapping for DeepSeek via Kun.
+#
+# The only place in this build where concrete model names are allowed.
+# Verified against Kun's runtime config on 2026-09-09
+# (~/.kun/data/config.json, provider `deepseek`).
+
+tiers: [pro, flash]
+efforts: ["off", high, max]      # Kun's own scale; its default is `max`.
+# `off` is quoted on purpose: bare off is a YAML 1.1 boolean, not the string.
+
+deepseek:
+  pro:   deepseek-v4-pro         # planning, implementation, review
+  flash: deepseek-v4-flash       # reconnaissance, mechanical fixes, test runs
+  orchestrator: deepseek-v4-pro  # the lead agent is also the heavy implementer
+
+  effort:
+    default: high                # session default; see agents/ROLES.md
+    escalate: max                # manual, per task: planning, hard bugs, release review
+    mechanical: "off"            # ready script runs, log collection, bulk renames
+
+# Facts that shape the map (from the same runtime config):
+#
+# - both models report contextWindowTokens = 1000000, but Kun compacts far
+#   earlier: defaultSoftThreshold 192000 / defaultHardThreshold 217600.
+#   Treat ~190k as the working window, not 1M.
+# - supportedEfforts = [off, high, max] for both models; defaultEffort = max.
+# - endpointFormat = chat_completions against https://api.deepseek.com.
+#
+# Applying the map: Kun takes the model from the session (or a per-agent GUI
+# override), NOT from the role file. See agents/ROLES.md, "Where the model
+# and the effort actually come from".
