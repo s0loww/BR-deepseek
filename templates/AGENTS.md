@@ -85,6 +85,7 @@ moment it applies, never preloaded.
 | debugging, bug, reproduction / отладка, баг, воспроизведение | `debugging-loop` | error-fixer |
 | session handoff, context limit / передача сессии, лимит контекста | `session-handoff` | (orchestrator) |
 | where is X, how does Y work / где находится, как работает | `context-packs` | explorer |
+| guide, how-to, reference, docs / документация, инструкция, руководство | — | doc-writer |
 
 ## Subagents
 
@@ -100,6 +101,7 @@ column below is a configuration recommendation, not a file-enforced fact.
 | error-fixer | flash | high | inherit |
 | tester | flash | high | inherit |
 | code-reviewer | pro | high | readOnly |
+| doc-writer | pro | high | inherit |
 
 - Delegate bounded independent work (scouting, a separate edit, review);
   decomposition, final decisions and result integration stay with the

@@ -29,7 +29,7 @@ markdown-роли, `SKILL.md`, хуки с тем же протоколом. П�
 templates/AGENTS.md    корневой контракт (шаблон, заполняется под проект)
 rules/                 8 правил, ленивая загрузка по индексу из AGENTS.md
 agents/ROLES.md        реестр ролей + карта тиров и усилий
-agents/roles/          6 ролей в формате Kun
+agents/roles/          7 ролей в формате Kun
 skills/                2 скилла (powershell-windows, mermaid-diagrams)
 install/layout.md      куда что кладётся в целевом проекте
 install/model-map.yaml тиры -> deepseek-v4-pro / flash, шкала off|high|max
@@ -49,7 +49,7 @@ INSTALL.md             процедура установки
 `test-discipline`, `script-contract`.
 
 Роли: `explorer`, `planner`, `developer`, `error-fixer`, `tester`,
-`code-reviewer`.
+`code-reviewer`, `doc-writer`.
 
 ## Что осознанно не вошло
 
@@ -60,9 +60,9 @@ INSTALL.md             процедура установки
   Напоминание о правилах живёт в индексе `AGENTS.md`.
 - **Команды** — файловых кастомных слэш-команд в Kun нет.
 - **OpenSpec** — отдельный софт, в базу не тянем.
-- **Семь ролей из upstream** (`analytic`, `architect`, `arch-reviewer`,
-  `refactoring`, `doc-writer`, `metadata-manager`,
-  `performance-optimizer`) — пока остаются у оркестратора.
+- **Шесть ролей из upstream** (`analytic`, `architect`, `arch-reviewer`,
+  `refactoring`, `metadata-manager`, `performance-optimizer`) — пока
+  остаются у оркестратора.
 
 ## Лицензия
 

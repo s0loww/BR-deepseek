@@ -1,6 +1,6 @@
 # Role registry
 
-Six roles for the base build. Each one is a markdown file in
+Seven roles for the base build. Each one is a markdown file in
 `agents/roles/<role>.md`, installed into the target project as
 `.kun/agents/<role>.md`.
 
@@ -12,6 +12,7 @@ Six roles for the base build. Each one is a markdown file in
 | error-fixer | flash | high | inherit | Fast targeted error fixing, minimal edits, no architectural changes |
 | tester | flash | high | inherit | Test runs, behavior verification, evidence collection |
 | code-reviewer | pro | high | readOnly | Code review — only on an explicit user request |
+| doc-writer | pro | high | inherit | Documentation for people: guides, how-tos, reference, code maps |
 
 `flash` / `pro` resolve through `install/model-map.yaml`. `toolPolicy` is a
 Kun frontmatter field: `readOnly` — read and search only; `inherit` — the
@@ -30,6 +31,14 @@ Practical consequence: pick the session model for the heaviest role you plan
 to run, and override the light roles downward in the GUI. Do not assume a
 role file demotes itself — it cannot.
 
+## Why doc-writer sits on the full tier
+
+Upstream runs this role on the cheapest tier: documentation from confirmed
+facts is mechanical work. Here it is on `pro` on purpose — in this
+installation prose *is* the main product, not a by-product of shipping code,
+and a rewrite costs more than the tier does. Move it to `flash` if that
+stops being true.
+
 ## Effort semantics on DeepSeek
 
 The scale is `off | high | max` (Kun's default is `max`), which is coarser
@@ -47,7 +56,7 @@ deliberately.
 
 ## Roles that are not in the base build
 
-`analytic`, `architect`, `arch-reviewer`, `refactoring`, `doc-writer`,
+`analytic`, `architect`, `arch-reviewer`, `refactoring`,
 `metadata-manager`, `performance-optimizer` — the upstream distribution has
 them; this build does not. Their work stays with the orchestrator until
 there is evidence the model holds a longer role chain. Add a role only when
