@@ -64,6 +64,11 @@ INSTALL.md             процедура установки
   `refactoring`, `doc-writer`, `metadata-manager`,
   `performance-optimizer`) — пока остаются у оркестратора.
 
+## Лицензия
+
+MIT — [`LICENSE`](LICENSE). Заимствования из чужих проектов и их условия —
+[`THIRD-PARTY.md`](THIRD-PARTY.md).
+
 ## Статус
 
 **Доставка правил замерена.** Триггеринг на `deepseek-v4-pro` при усилии
