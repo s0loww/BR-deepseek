@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "projectId", "sourceDir", "resultDir"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "projectId": { "type": "string", "minLength": 1 },
+    "sourceDir": { "type": "string", "minLength": 1 },
+    "resultDir": { "type": "string", "minLength": 1 },
+    "platform": {
+      "type": "object",
+      "properties": {
+        "executable": { "type": ["string", "null"] },
+        "versionPrefix": { "type": ["string", "null"] }
+      }
+    },
+    "extension": {
+      "type": "object",
+      "description": "Задаётся, ТОЛЬКО если sourceDir — это расширение конфигурации. Тогда deploy добавляет -Extension к /LoadConfigFromFiles и /UpdateDBCfg (иначе голая команда перезапишет основную конфигурацию).",
+      "properties": {
+        "name": { "type": ["string", "null"], "description": "Имя расширения из Configuration.xml (Properties/Name)." }
+      }
+    },
+    "testTarget": {
+      "type": "object",
+      "properties": {
+        "kind": { "enum": ["none", "file", "server"] },
+        "environment": { "enum": ["test", "development", "production"] },
+        "path": { "type": ["string", "null"] },
+        "server": { "type": ["string", "null"] },
+        "ref": { "type": ["string", "null"] },
+        "userEnv": { "type": ["string", "null"] },
+        "passwordEnv": { "type": ["string", "null"] },
+        "envFile": { "type": ["string", "null"] },
+        "envSection": { "type": ["string", "null"] }
+      }
+    },
+    "vanessa": {
+      "type": "object",
+      "description": "Настройки смоук-контура Vanessa-ADD для команды test. Все поля необязательны; при отсутствии применяются значения по умолчанию.",
+      "properties": {
+        "featuresDir": { "type": "string", "description": "Каталог фич (по умолчанию tools/agent-1c/vanessa-suite/features)." },
+        "settingsTemplate": { "type": "string", "description": "Шаблон настроек vanessa-runner (--settings)." },
+        "addParamsTemplate": { "type": "string", "description": "Шаблон настроек Vanessa-ADD (--vanessasettings)." },
+        "testClientTimeoutSeconds": { "type": "integer", "minimum": 1, "description": "Таймаут запуска тест-клиента, сек (по умолчанию 300; дефолтные 25 не переживают первый старт тяжёлой конфигурации)." },
+        "ordinaryApp": { "type": "integer", "enum": [-1, 0, 1], "description": "Тип клиента: 0 — тонкий (по умолчанию), 1 — толстый, -1 — без указания." }
+      }
+    }
+  }
+}

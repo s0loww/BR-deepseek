@@ -1,0 +1,83 @@
+[
+ {
+  "code": "ПараметрыВыбора = Новый Массив;",
+  "line": 3,
+  "message": "ПараметрыВыбора как локальная переменная в модуле формы: платформа может понять это как присваивание свойству элемента",
+  "path": "dirty/Forms/ФормаСписка/Ext/Form/Module.bsl",
+  "rule": "form-reserved-name",
+  "severity": "error",
+  "source": "rules/form-reserved-names.md"
+ },
+ {
+  "code": "СписокВыбора = Новый СписокЗначений;",
+  "line": 4,
+  "message": "СписокВыбора как локальная переменная в модуле формы: платформа может понять это как присваивание свойству элемента",
+  "path": "dirty/Forms/ФормаСписка/Ext/Form/Module.bsl",
+  "rule": "form-reserved-name",
+  "severity": "error",
+  "source": "rules/form-reserved-names.md"
+ },
+ {
+  "code": "ПродолжитьВызов(Отказ);",
+  "line": 3,
+  "message": "ПродолжитьВызов() в &Перед: компилируется только внутри &Вместо",
+  "path": "dirty/interceptors.bsl",
+  "rule": "ext-continue-outside-instead",
+  "severity": "error",
+  "source": "rules/extension-patterns.md"
+ },
+ {
+  "code": "Процедура ДЕМО_ОбработкаПроведения(Отказ, Режим)",
+  "line": 7,
+  "message": "&Вместо(\"ОбработкаПроведения\") без ПродолжитьВызов(): оригинал не выполнится — если замена полная, это надо указать явно",
+  "path": "dirty/interceptors.bsl",
+  "rule": "ext-instead-without-continue",
+  "severity": "warning",
+  "source": "rules/extension-patterns.md"
+ },
+ {
+  "code": "#Вставка",
+  "line": 13,
+  "message": "маркер #Вставка/#Удаление внутри &Вместо: платформа молча перестаёт применять модуль, деплой при этом проходит",
+  "path": "dirty/interceptors.bsl",
+  "rule": "ext-designer-markers",
+  "severity": "error",
+  "source": "rules/extension-patterns.md"
+ },
+ {
+  "code": "#КонецВставки",
+  "line": 15,
+  "message": "маркер #Вставка/#Удаление внутри &Вместо: платформа молча перестаёт применять модуль, деплой при этом проходит",
+  "path": "dirty/interceptors.bsl",
+  "rule": "ext-designer-markers",
+  "severity": "error",
+  "source": "rules/extension-patterns.md"
+ },
+ {
+  "code": "ЗаписьЖурналаРегистрации(",
+  "line": 2,
+  "message": "2-й аргумент ЗаписьЖурналаРегистрации — Уровень, а передан строковый литерал: \"Ошибка\"",
+  "path": "dirty/logging.bsl",
+  "rule": "log-level-slot",
+  "severity": "error",
+  "source": "rules/logging-strategy.md"
+ },
+ {
+  "code": "ЗаписьЖурналаРегистрации(",
+  "line": 11,
+  "message": "6-й аргумент ЗаписьЖурналаРегистрации — РежимТранзакции, а передан конструктор Новый: Новый Структура(\"Длительность\", 120); Структура идёт 4-м",
+  "path": "dirty/logging.bsl",
+  "rule": "log-transaction-slot",
+  "severity": "error",
+  "source": "rules/logging-strategy.md"
+ },
+ {
+  "code": "Результат = Запрос.Выполнить();",
+  "line": 5,
+  "message": "запрос выполняется в цикле: O(n) обращений к СУБД — вынести в один запрос с параметром-списком",
+  "path": "dirty/queries.bsl",
+  "rule": "query-in-loop",
+  "severity": "error",
+  "source": "rules/anti-patterns.md"
+ }
+]

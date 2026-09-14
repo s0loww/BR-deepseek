@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "mcp": {
+    "servers": {
+      "rlm": {
+        "transport": "streamable-http",
+        "url": "http://127.0.0.1:9000/mcp",
+        "timeoutMs": 330000
+      }
+    }
+  },
+  "skills": {
+    "enabled": true,
+    "includeConventional": true,
+    "roots": [],
+    "disabledIds": []
+  }
+}

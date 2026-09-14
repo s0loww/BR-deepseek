@@ -82,6 +82,31 @@ Settings → Agents не выставлен per-agent override. Тиры в
 }
 ```
 
+Поля сервера по схеме `KunProjectMcpServerConfig` (строгая, лишний ключ —
+весь файл невалиден): `enabled` (по умолчанию `true`), `transport`,
+`command`, `args`, `cwd`, `url`, `headers`, `env`, `oauth`, `timeoutMs`.
+`stdio` требует `command`, `streamable-http` и `sse` — `url`; `cwd` только у
+`stdio`. **`timeoutMs` по умолчанию 30 000, максимум 600 000** — сервер с
+долгими вызовами надо поднимать явно, иначе Kun оборвёт ответ. Внутри рантайма
+проектный сервер получает id вида `__kun_project_<хеш воркспейса>_<id>_<хеш>`.
+
+## Политика инструментов роли и MCP
+
+`toolPolicy: readOnly` — это **не** «всё, кроме записи». В редакторе ролей
+Kun подписывает его так: *Investigation only: read / grep / find / ls. No MCP
+or skills.* Роль с `readOnly` не видит ни MCP-серверов, ни скиллов.
+Роль, которой нужен MCP, но нельзя править файлы, — `inherit` плюс
+`blockedTools` из встроенных инструментов.
+
+Встроенные инструменты (`BUILTIN_TOOL_NAMES`): `read`, `grep`, `find`, `ls`,
+`repo_map`, `git_inspect`, `edit`, `write`, `bash`, `lsp`, `verify_changes`,
+`send_im_attachment`. Во внутренней схеме профиля есть ещё
+`allowedMcpServers` / `blockedMcpServers` / `allowedSkills` /
+`blockedSkills`, но из файла роли воркспейса Kun их **не читает** —
+только из GUI.
+
+Если у роли не указан `toolPolicy: inherit`, Kun ставит `readOnly`.
+
 Репозиторий **не может одобрить сам себя**: открытие проекта не запускает
 его MCP. Одобрение — вручную в Settings → Agents → Project MCP & Skills,
 Kun привязывает грант к SHA-256 дайджесту файла и хранит его локально

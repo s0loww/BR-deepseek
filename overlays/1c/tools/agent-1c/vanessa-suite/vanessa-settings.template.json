@@ -1,0 +1,8 @@
+{
+  "_comment": "Шаблон настроек vanessa-runner (--settings, формат env.json). agent-1c.ps1 подставляет плейсхолдеры из профиля/.env во временный файл resultDir/<timestamp>-test/ и удаляет его в finally. Пароль сюда НЕ пишется — процессу он передаётся через переменную окружения RUNNER_DBPWD.",
+  "default": {
+    "--ibconnection": "{{IB_CONNECTION}}",
+    "--db-user": "{{LOGIN}}",
+    "--v8version": "{{V8VERSION}}"
+  }
+}

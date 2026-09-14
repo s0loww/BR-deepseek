@@ -1,0 +1,188 @@
+{
+  "coverage": [
+    "verification-matrix"
+  ],
+  "gate-before-done": [
+    "verification-matrix"
+  ],
+  "script-mutation": [
+    "script-contract"
+  ],
+  "script-report": [
+    "script-contract"
+  ],
+  "handoff-chain": [
+    "delegation"
+  ],
+  "who-explores": [
+    "delegation",
+    "collaboration-modes"
+  ],
+  "split-or-self": [
+    "delegation"
+  ],
+  "readonly-rights": [
+    "delegation"
+  ],
+  "context-full": [
+    "session-handoff"
+  ],
+  "flaky-bug": [
+    "systematic-debugging",
+    "debugging-loop"
+  ],
+  "fix-then-what": [
+    "debugging-loop",
+    "systematic-debugging"
+  ],
+  "how-deep": [
+    "collaboration-modes"
+  ],
+  "urgent-broken": [
+    "collaboration-modes"
+  ],
+  "same-prep-every-time": [
+    "context-packs"
+  ],
+  "startup-map-for-repeat-work": [
+    "context-packs"
+  ],
+  "red-after-refactor": [
+    "test-discipline"
+  ],
+  "where-to-start-tests": [
+    "test-discipline"
+  ],
+  "mem-report": [
+    "dcs-composition-recipes"
+  ],
+  "zero-crosstab": [
+    "dcs-composition-recipes"
+  ],
+  "profile-roles-lost": [
+    "access-rights-bsp"
+  ],
+  "ext-roles-missing": [
+    "access-rights-bsp"
+  ],
+  "no-sources": [
+    "getconfigfiles"
+  ],
+  "slow-query": [
+    "anti-patterns"
+  ],
+  "index-not-used": [
+    "dev-standards-architecture"
+  ],
+  "unit-test": [
+    "unit-tests-1c"
+  ],
+  "load-hangs": [
+    "platform-solutions"
+  ],
+  "sdbl-length": [
+    "platform-solutions"
+  ],
+  "form-xml-broken": [
+    "metadata-xml-workarounds"
+  ],
+  "form-var-name": [
+    "form-reserved-names"
+  ],
+  "lock-conflict": [
+    "locks-and-transactions"
+  ],
+  "async-lost-error": [
+    "async-methods"
+  ],
+  "background-external": [
+    "platform-solutions"
+  ],
+  "ssl-method-unknown": [
+    "dev-standards-architecture"
+  ],
+  "typical-edit-diff": [
+    "dev-standards-core"
+  ],
+  "register-design": [
+    "registers-design"
+  ],
+  "extend-typical": [
+    "extension-patterns"
+  ],
+  "what-to-log": [
+    "logging-strategy"
+  ],
+  "split-module": [
+    "refactor-add"
+  ],
+  "http-exchange": [
+    "integrations-add",
+    "async-methods"
+  ],
+  "powershell-fix": [
+    "com-powershell-1c"
+  ],
+  "where-logic": [
+    "clean-architecture-1c"
+  ],
+  "domain-boundaries": [
+    "ddd-1c"
+  ],
+  "form-module-directives": [
+    "form-module"
+  ],
+  "form-regions": [
+    "dev-standards-forms"
+  ],
+  "add-form-elements": [
+    "forms-add"
+  ],
+  "hook-form-event": [
+    "forms-events-add"
+  ],
+  "resource-vs-computed": [
+    "dcs-design"
+  ],
+  "search-order": [
+    "tooling-playbooks"
+  ],
+  "managed-form-where-to-start": [
+    "forms"
+  ],
+  "several-form-edits-at-once": [
+    "forms"
+  ],
+  "red-after-refactor-1c": [
+    "test-discipline",
+    "unit-tests-1c"
+  ],
+  "where-to-start-tests-1c": [
+    "test-discipline",
+    "unit-tests-1c"
+  ],
+  "bad-rule-name-error": [
+    "kd2-exchange-rules"
+  ],
+  "xml-rules-for-universal-exchange": [
+    "kd2-exchange-rules"
+  ],
+  "rule-invisible-in-conversion": [
+    "kd31-exchange-rules"
+  ],
+  "empty-objects-catalog": [
+    "kd31-exchange-rules"
+  ],
+  "unpacked-config-layout": [
+    "v8unpack-source-structure"
+  ],
+  "edit-then-pack-back": [
+    "v8unpack-source-structure"
+  ],
+  "stale-no-callers": [
+    "tooling-playbooks"
+  ],
+  "tj-long-calls": [
+    "tooling-playbooks"
+  ]
+}

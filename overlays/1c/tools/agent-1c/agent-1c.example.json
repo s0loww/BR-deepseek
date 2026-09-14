@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "projectId": "example-1c-project",
+  "sourceDir": "src",
+  "resultDir": "var/agent-1c",
+  "platform": {
+    "executable": null,
+    "versionPrefix": "8.3.27"
+  },
+  "extension": {
+    "name": null
+  },
+  "testTarget": {
+    "kind": "none",
+    "environment": "test",
+    "path": null,
+    "server": null,
+    "ref": null,
+    "userEnv": "AGENT_1C_USER",
+    "passwordEnv": "AGENT_1C_PASSWORD",
+    "envFile": null,
+    "envSection": null
+  },
+  "vanessa": {
+    "featuresDir": "tools/agent-1c/vanessa-suite/features",
+    "settingsTemplate": "tools/agent-1c/vanessa-suite/vanessa-settings.template.json",
+    "addParamsTemplate": "tools/agent-1c/vanessa-suite/vanessa-add-params.template.json",
+    "testClientTimeoutSeconds": 300,
+    "ordinaryApp": 0
+  }
+}

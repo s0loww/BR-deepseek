@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "mcp": {
+    "servers": {
+      "rlm": {
+        "transport": "stdio",
+        "command": "rlm-tools-bsl",
+        "args": ["--transport", "stdio"],
+        "timeoutMs": 330000
+      }
+    }
+  },
+  "skills": {
+    "enabled": true,
+    "includeConventional": true,
+    "roots": [],
+    "disabledIds": []
+  }
+}

@@ -14,11 +14,14 @@
     python evals/triggering/ask.py answers-1.json          # один прогон
     python evals/triggering/ask.py answers.json --runs 3   # answers-1..3.json
     python evals/triggering/ask.py a.json --effort high    # ступень усилия
+    python evals/triggering/ask.py a.json --overlay 1c     # ядро + 1С-оверлей
 
 Про лимит вывода. deepseek-v4-pro — reasoning-модель: рассуждение тратит тот
 же бюджет `max_tokens`, что и ответ. На 4096 весь бюджет уходит в
 `reasoning_content`, `content` приходит пустым, а `finish_reason` — `length`.
-Отсюда дефолт в 16384 и явная диагностика этого случая.
+Отсюда дефолт в 16384 и явная диагностика этого случая. Рассуждение растёт с
+числом кейсов: на 60 кейсах ядра с 1С-оверлеем при `high` 16384 не хватило
+(64 тыс. символов рассуждения) — для него `--max-tokens 32768`.
 
 Ключ: переменная DEEPSEEK_API_KEY или файл `.env` в корне сборки (одна
 строка с ключом). Чистая стандартная библиотека.
@@ -37,6 +40,7 @@ REPO = os.path.dirname(os.path.dirname(HERE))
 API = "https://api.deepseek.com/v1/chat/completions"
 DEFAULT_MODEL = "deepseek-v4-pro"
 MAX_TOKENS = 16384
+OVERLAY_ARGS = []  # ["--overlay", "1c"] — промпт по ядру + оверлею, см. run.py
 
 
 def read_key():
@@ -57,7 +61,7 @@ def build_prompt():
     """Промпт строится тем же скриптом, что и для ручного прогона, — чтобы
     задание нельзя было случайно разойтись между двумя путями запуска."""
     out = subprocess.run(
-        [sys.executable, os.path.join(HERE, "run.py"), "prompt"],
+        [sys.executable, os.path.join(HERE, "run.py"), "prompt"] + OVERLAY_ARGS,
         capture_output=True, check=True,
     )
     return out.stdout.decode("utf-8")
@@ -114,6 +118,11 @@ def main(argv):
     if "--model" in argv:
         model = argv[argv.index("--model") + 1]
     effort = argv[argv.index("--effort") + 1] if "--effort" in argv else None
+    if "--overlay" in argv:
+        OVERLAY_ARGS.extend(["--overlay", argv[argv.index("--overlay") + 1]])
+    if "--max-tokens" in argv:
+        global MAX_TOKENS
+        MAX_TOKENS = int(argv[argv.index("--max-tokens") + 1])
 
     key = read_key()
     prompt = build_prompt()

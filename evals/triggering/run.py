@@ -12,6 +12,7 @@
 
     python evals/triggering/run.py prompt  > prompt.md   # выдать задание
     python evals/triggering/run.py score answers.json    # сверить ответы
+    python evals/triggering/run.py prompt --overlay 1c   # ядро + 1С-оверлей
 
 Отвечать должна модель целевой среды, а не сессия, которая правила эти правила.
 Прогон через Kun:
@@ -37,7 +38,16 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 RULE_DIRS = ["rules"]
+CASE_FILES = [os.path.join(HERE, "cases.json")]
 DESC_RE = re.compile(r'^description:\s*"?(.*?)"?\s*$')
+
+
+def use_overlay(name):
+    """В проекте со стеком правила ядра и оверлея лежат в одном `rules/` и
+    конкурируют за один индекс — поэтому и замер идёт по объединению: индекс
+    ядро + оверлей, кейсы ядра + кейсы оверлея."""
+    RULE_DIRS.append(os.path.join("overlays", name, "rules"))
+    CASE_FILES.append(os.path.join(REPO, "overlays", name, "evals", "cases.json"))
 
 
 def load_index():
@@ -65,8 +75,11 @@ def load_index():
 
 
 def load_cases():
-    with open(os.path.join(HERE, "cases.json"), "r", encoding="utf-8-sig") as handle:
-        return json.load(handle)["cases"]
+    cases = []
+    for path in CASE_FILES:
+        with open(path, "r", encoding="utf-8-sig") as handle:
+            cases.extend(json.load(handle)["cases"])
+    return cases
 
 
 def warn_stale_cases(index, cases):
@@ -221,6 +234,10 @@ def main(argv):
     # написано в docstring, без PYTHONIOENCODING снаружи.
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
+    if "--overlay" in argv:
+        at = argv.index("--overlay")
+        use_overlay(argv[at + 1])
+        argv = argv[:at] + argv[at + 2:]
     if not argv or argv[0] not in ("prompt", "score", "bias"):
         print(__doc__)
         return 2

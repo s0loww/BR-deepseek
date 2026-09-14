@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "note": "Reference-снимок рабочей связки инструментов (проверено живыми прогонами). Обновляйте по мере проверки: см. раздел «Обновление toolchain» в DEPLOYMENT.md. Не заменяйте закреплённые URL/версии на latest — один и тот же коммит проекта должен разворачиваться одинаковыми инструментами.",
+  "bslLanguageServer": {
+    "version": "1.0.7",
+    "url": "https://github.com/1c-syntax/bsl-language-server/releases/download/v1.0.7/bsl-language-server_win.zip",
+    "sha256": "FED523E3B6D1D64C65A0DF08FF74088C4D26EB3C550A2FF776C84AC2C8655C30",
+    "executable": "bsl-language-server/bsl-language-server.exe",
+    "note": "ПИН НЕ ПРОВЕРЕН ЧИСТЫМ BOOTSTRAP. sha256 — официальный digest ассета из GitHub API, а не хеш локально скачанного архива: 1.0.7 подтверждена живыми прогонами analyze после ручной сборки каталога инструмента, скачивание по этому URL не выполнялось (домен ассетов был недоступен — см. «Обновление toolchain» в DEPLOYMENT.md). На первой же установке с доступом к домену сверить фактический хеш архива и, если разойдётся, поправить lock. Предыдущий проверенный пин — 1.0.3, sha256 5886595B8D6355D99F8D63CFCAAE8AFEDD1000A2744BE4D5A9DD720610D5D0DC."
+  },
+  "oneScript": {
+    "version": "1.9.4",
+    "optional": true,
+    "note": "OneScript-рантайм (oscript/opm) под vanessa-runner. Ставится портативно в %LOCALAPPDATA%\\agent-1c\\tools\\onescript, глобальный PATH не меняется."
+  },
+  "opm": {
+    "version": "1.6.5",
+    "optional": true,
+    "note": "Пакетный менеджер OneScript. Через него ставится vanessa-runner."
+  },
+  "vanessaRunner": {
+    "version": "2.6.1",
+    "optional": true,
+    "note": "Устанавливается через opm; исполняемый файл — %LOCALAPPDATA%\\agent-1c\\tools\\onescript\\bin\\vrunner.bat."
+  },
+  "vanessaAutomation": {
+    "version": "1.2.043.28",
+    "source": "https://github.com/Pr-Mex/vanessa-automation/releases/download/1.2.043.28/vanessa-automation-single.1.2.043.28.zip",
+    "runner": "vanessa/1.2.043.28/vanessa-automation-single.epf",
+    "note": "ТОЛЬКО свежий single-релиз с GitHub. opm-пакет add (bddRunner.epf 6.8.0, 2021) оставлен как источник зависимостей vrunner, но НЕСОВМЕСТИМ с платформами 8.3.27+ — падает «Преобразование значения к типу Число» при разборе режима совместимости. Не использовать.",
+    "optional": true
+  }
+}

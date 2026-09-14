@@ -1,0 +1,29 @@
+00:01.100000-2500000,CALL,0,level=INFO,process=rphost,p:processName=demo_ib,OSThread=101,t:clientID=5,t:applicationName=1CV8C,t:computerName=PC-DEMO,t:connectID=7,SessionID=11,Usr=Иванов,Context=ОбщаяФорма.Демо.Форма : ПровестиНаСервере,Module=ОбщийМодуль.Демо,Method=Провести,CallID=1,Memory=100,MemoryPeak=5000,InBytes=10,OutBytes=20,CpuTime=2400000
+00:05.200000-500000,CALL,0,level=INFO,process=rphost,p:processName=demo_ib,OSThread=101,t:clientID=5,t:computerName=PC-DEMO,t:connectID=7,SessionID=11,Usr=Иванов,Context=ОбщаяФорма.Демо.Форма : ПровестиНаСервере,Module=ОбщийМодуль.Демо,Method=Провести,CallID=2,CpuTime=400000
+00:10.300000-1200000,DBMSSQL,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=101,t:clientID=5,t:computerName=PC-DEMO,t:connectID=7,SessionID=11,Usr=Иванов,DBMS=DBMSSQL,DataBase=srv-demo\demo_ib,Trans=0,dbpid=55,Sql="SELECT TOP 10 T1._Fld10 FROM dbo._Reference20 T1 WHERE T1._Description = N'СЕКРЕТ ''в кавычках''' AND T1._Fld11 = @P1
+p_0: 0x9A3B000000000000
+",Rows=1,RowsAffected=-1,Context='
+ОбщийМодуль.Демо.Модуль : 20 : Документ.Провести();
+	Документ.Демо.МодульОбъекта : 10 : Запрос.Выполнить();'
+00:11.400000-300000,DBMSSQL,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=101,t:connectID=7,SessionID=11,Usr=Петров,DBMS=DBMSSQL,DataBase=srv-demo\demo_ib,Sql="SELECT TOP 25 T1._Fld10 FROM dbo._Reference20 T1 WHERE T1._Description = N'ДРУГОЕ' AND T1._Fld11 = @P1
+p_0: 0x0000000000000001
+",Rows=0,Context='
+ОбщийМодуль.Демо.Модуль : 20 : Документ.Провести();
+	Документ.Демо.МодульОбъекта : 10 : Запрос.Выполнить();'
+00:20.000001-15,TLOCK,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=102,t:connectID=8,SessionID=12,Usr=Иванов,DBMS=DBMSSQL,DataBase=srv-demo\demo_ib,Regions=InfoRg30.DIMS,Locks='InfoRg30.DIMS Exclusive Fld31=12:8a2b000000000000',WaitConnections=,Context='
+ОбщийМодуль.Демо.Модуль : 30 : Записать();
+	РегистрСведений.Демо.МодульНабораЗаписей : 5 : Блокировка.Заблокировать();'
+00:21.000002-800000,TLOCK,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=103,t:connectID=9,SessionID=13,Usr=Петров,DBMS=DBMSSQL,DataBase=srv-demo\demo_ib,Regions=InfoRg30.DIMS,Locks='InfoRg30.DIMS Exclusive Fld31=12:8a2b000000000000',WaitConnections=8,Context='
+ОбщийМодуль.Демо.Модуль : 30 : Записать();
+	РегистрСведений.Демо.МодульНабораЗаписей : 5 : Блокировка.Заблокировать();'
+00:40.000003-20000000,TTIMEOUT,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=104,t:connectID=10,SessionID=14,Usr=Петров,Regions=InfoRg30.DIMS,WaitConnections=8,Context='
+РегистрСведений.Демо.МодульНабораЗаписей : 5 : Блокировка.Заблокировать();'
+00:50.000004-0,TDEADLOCK,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=105,t:connectID=11,SessionID=15,Usr=Иванов,DeadlockConnectionIntersections='11 8 InfoRg30.DIMS Exclusive Fld31=12:8a2b000000000000',Context='
+Документ.Демо.МодульОбъекта : 44 : НаборЗаписей.Записать();'
+01:00.000005-0,EXCP,2
+01:01.000006-0,EXCP,2,level=ERROR,process=rphost,p:processName=demo_ib,OSThread=106,Exception=DataBaseException,Descr='Ошибка СЕКРЕТ, с запятой
+и переводом строки',Context=Документ.Демо.МодульОбъекта : 50 : ВызватьИсключение Текст;
+01:02.000007-0,QERR,4,level=INFO,process=rphost,p:processName=demo_ib,OSThread=107,Usr=Иванов,Descr='Поле не найдено',Query='ВЫБРАТЬ
+01:03.000008-5,CALL,0,level=INFO КАК Ловушка, "СЕКРЕТ" КАК Строка
+ИЗ Справочник.Демо',Context='
+Документ.Демо.МодульОбъекта : 60 : Запрос.Выполнить();'

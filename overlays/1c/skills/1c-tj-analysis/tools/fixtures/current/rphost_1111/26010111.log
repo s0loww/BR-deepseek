@@ -1,0 +1,1 @@
+00:00.500000-1000000,CALL,0,level=INFO,process=rphost,p:processName=other_ib,OSThread=201,t:connectID=21,SessionID=31,Usr=Иванов,Context=Обработка.Демо.Форма : Сформировать,Module=ОбщийМодуль.Отчеты,Method=Сформировать,CpuTime=900000
