@@ -6,6 +6,12 @@ content goes and in **what format**.
 Target: **Kun** (desktop GUI or TUI) running DeepSeek. Paths verified
 against Kun's own contract — see `docs/kun-contract.md`.
 
+The target project is a separate folder, never the clone of this build:
+installed into the clone, overlay rules land in the root `rules/` that the
+build's own checks treat as the base, and `git pull` updates the sources but
+not the copies the agent reads. Recovery — `install/split-layout.md`;
+verification of an installed 1C project — `python install/kun_split.py verify`.
+
 ## Project root
 
 - `AGENTS.md` — the root contract. Kun reads it natively and injects it into
